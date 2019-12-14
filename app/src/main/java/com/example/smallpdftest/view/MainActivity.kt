@@ -1,4 +1,4 @@
-package com.example.smallpdftest
+package com.example.smallpdftest.view
 
 import android.content.Context
 import android.content.Intent
@@ -6,6 +6,8 @@ import android.net.Uri
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProviders
+import com.example.smallpdftest.viewmodel.MainActivityViewModel
+import com.example.smallpdftest.R
 import com.example.smallpdftest.network.NetworkUrl
 import com.example.smallpdftest.network.RetrofitClient
 import com.example.smallpdftest.util.Consumer
@@ -25,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         viewModel = ViewModelProviders.of(this).get(MainActivityViewModel::class.java)
 
         loginButton.setOnClickListener {
-            val authIntent = Intent(Intent.ACTION_VIEW, Uri.parse(RetrofitClient.BASE_URL + authApi.API_AUTHORIZE
+            val authIntent = Intent(Intent.ACTION_VIEW, Uri.parse(RetrofitClient.AUTH_BASE_URL + authApi.API_AUTHORIZE
                             + authApi.CLIENT_ID_PARAM + authApi.CLIENT_ID
                             + authApi.REDIRECT_URI_PARAM + authApi.REDIRECT_URI))
             startActivity(authIntent)

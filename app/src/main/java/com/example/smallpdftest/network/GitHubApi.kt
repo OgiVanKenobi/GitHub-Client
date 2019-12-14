@@ -1,11 +1,9 @@
 package com.example.smallpdftest.network
 
 import com.example.smallpdftest.model.AccessToken
+import com.example.smallpdftest.model.User
 import retrofit2.Call
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.Headers
-import retrofit2.http.POST
+import retrofit2.http.*
 
 /**
  * Interface containing GitHub Api methods
@@ -20,4 +18,7 @@ interface GitHubApi {
         @Field("client_secret") clientSecret: String,
         @Field("code") accessCode: String
     ): Call<AccessToken>
+
+    @GET("user")
+    fun getUser(): Call<User>
 }

@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Small Pdf test</string>
+    <string name="not_specified">Not specified</string>
 </resources>
