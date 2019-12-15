@@ -1,16 +1,14 @@
 package com.example.smallpdftest.view
 
-import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProviders
-import com.example.smallpdftest.viewmodel.MainActivityViewModel
 import com.example.smallpdftest.R
 import com.example.smallpdftest.network.NetworkUrl
 import com.example.smallpdftest.network.RetrofitClient
-import com.example.smallpdftest.util.Consumer
+import com.example.smallpdftest.viewmodel.MainActivityViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -18,7 +16,6 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var viewModel: MainActivityViewModel
     private var authCode = ""
-    private val authTokenKey = "authToken"
     private val authApi = NetworkUrl.AuthAPi
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,22 +36,7 @@ class MainActivity : AppCompatActivity() {
         val uri: Uri? = intent.data
         if (uri != null && uri.toString().startsWith(authApi.REDIRECT_URI)) {
             authCode = uri.getQueryParameter("code").toString()
-            viewModel.getAccessToken(this, authCode, object : Consumer<Boolean> {
-                override fun consume(isTokenFetched: Boolean) {
-                    if (isTokenFetched) {
-                        showAuthToken()
-                    }
-                }
-            })
-        }
-    }
-
-    private fun showAuthToken() {
-        val preference = getSharedPreferences(resources.getString(R.string.app_name), Context.MODE_PRIVATE)
-        val authToken = preference.getString(authTokenKey, "")
-
-        if (!authToken.isNullOrEmpty()) {
-            textLabel.text = authToken
+            viewModel.getAccessToken(this, authCode)
         }
     }
 }

@@ -31,9 +31,8 @@ class MainActivityViewModel : ViewModel() {
      *
      * @param context context
      * @param authCode authentication code
-     * @param isTokenFetched is token fetched listener
      */
-    fun getAccessToken(context: Context, authCode: String, isTokenFetched: Consumer<Boolean>) {
+    fun getAccessToken(context: Context, authCode: String) {
         val retrofit = Retrofit.Builder()
             .baseUrl(RetrofitClient.AUTH_BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
@@ -41,13 +40,11 @@ class MainActivityViewModel : ViewModel() {
         retrofit.create(GitHubApi::class.java).getAccessToken(clientID, clientSecret, authCode)
             .enqueue(object : Callback<AccessToken> {
                 override fun onFailure(call: Call<AccessToken>, t: Throwable) {
-                    isTokenFetched.consume(false)
                 }
 
                 override fun onResponse(call: Call<AccessToken>, response: Response<AccessToken>) {
                     val accessToken = response.body()?.accessToken
                     accessToken?.let { storeAccessToken(context, it) }
-//                    isTokenFetched.consume(true)
 
                     if (accessToken != null) {
                         loadUser(context, accessToken)
@@ -57,7 +54,7 @@ class MainActivityViewModel : ViewModel() {
     }
 
     /**
-     * Method
+     * Method for fetching the user and opening User Activity
      */
     private fun loadUser(context: Context, accessToken: String) {
         RetrofitClient.getInstance(accessToken)?.getUser()?.enqueue(object : Callback<User> {
@@ -68,11 +65,15 @@ class MainActivityViewModel : ViewModel() {
             override fun onResponse(call: Call<User>, response: Response<User>) {
                 val user = response.body()
                 if (user != null) {
-                    val userActivityIntent = UserActivity.getIntent(context, user)
-                    startActivity(context, userActivityIntent, null)
+                    showUserActivity(context, user)
                 }
             }
         })
+    }
+
+    private fun showUserActivity(context: Context, user: User) {
+        val userActivityIntent = UserActivity.getIntent(context, user)
+        startActivity(context, userActivityIntent, null)
     }
 
     /**

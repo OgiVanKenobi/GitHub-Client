@@ -1,6 +1,7 @@
 package com.example.smallpdftest.model
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class User(
     @SerializedName("login") val login: String,
@@ -34,4 +35,4 @@ data class User(
     @SerializedName("following") val following: Int,
     @SerializedName("created_at") val createdAt: String,
     @SerializedName("updated_at") val updatedAt: String
-)
+) : Serializable

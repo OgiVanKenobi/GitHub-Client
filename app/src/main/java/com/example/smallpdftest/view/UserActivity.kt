@@ -4,35 +4,51 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProviders
 import com.bumptech.glide.Glide
 import com.example.smallpdftest.R
 import com.example.smallpdftest.model.User
 import com.example.smallpdftest.util.TextUtils
+import com.example.smallpdftest.viewmodel.UserViewModel
 import kotlinx.android.synthetic.main.activity_user.*
 
 class UserActivity : AppCompatActivity() {
+
+    private lateinit var viewModel: UserViewModel
+    private val authTokenKey = "authToken"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user)
         handleIntent()
+
+        viewRepositoriesButton.setOnClickListener {
+            val sharedPreference = getSharedPreferences(getString(R.string.app_name), Context.MODE_PRIVATE)
+            viewModel.loadRepositories(this, sharedPreference.getString(authTokenKey, ""))
+        }
     }
 
     private fun handleIntent() {
-        val intent = intent
-        val avatarURl = intent.getStringExtra(USER_AVATAR_KEY)
-        val name = intent.getStringExtra(USER_NAME_KEY)
-        val company = intent.getStringExtra(USER_COMPANY_KEY)
+        val bundle : Bundle? = intent.extras
+        val user : User = bundle?.getSerializable(USER_KEY) as User
 
-        Glide.with(this).load(avatarURl).into(avatarImageView)
-        TextUtils.setTextToTextView(this, nameTextView, name)
-        TextUtils.setTextToTextView(this, companyTextView, company)
+        initializeViewModel(user)
+        showData(user)
+    }
+
+    private fun showData(user: User) {
+        Glide.with(this).load(user.avatarUrl).into(avatarImageView)
+        TextUtils.setTextToTextView(this, nameTextView, user.name)
+        TextUtils.setTextToTextView(this, companyTextView, user.company)
+    }
+
+    private fun initializeViewModel(user: User) {
+        viewModel = ViewModelProviders.of(this).get(UserViewModel::class.java)
+        viewModel.initialize(user)
     }
 
     companion object {
-        private const val USER_AVATAR_KEY = "user_avatar_key"
-        private const val USER_NAME_KEY = "user_name_key"
-        private const val USER_COMPANY_KEY = "user_company_key"
+        private const val USER_KEY = "user_key"
 
         /**
          * Returns intent for starting User activity
@@ -42,9 +58,9 @@ class UserActivity : AppCompatActivity() {
          */
         fun getIntent(context: Context, user : User): Intent {
             val intent = Intent(context, UserActivity::class.java)
-            intent.putExtra(USER_AVATAR_KEY, user.avatarUrl)
-            intent.putExtra(USER_NAME_KEY, user.name)
-            intent.putExtra(USER_COMPANY_KEY, user.company)
+            var bundle = Bundle()
+            bundle.putSerializable(USER_KEY, user)
+            intent.putExtras(bundle)
             return intent
         }
     }

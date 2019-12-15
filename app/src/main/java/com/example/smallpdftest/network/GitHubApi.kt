@@ -1,6 +1,7 @@
 package com.example.smallpdftest.network
 
 import com.example.smallpdftest.model.AccessToken
+import com.example.smallpdftest.model.Repository
 import com.example.smallpdftest.model.User
 import retrofit2.Call
 import retrofit2.http.*
@@ -21,4 +22,7 @@ interface GitHubApi {
 
     @GET("user")
     fun getUser(): Call<User>
+
+    @GET("users/{user}/repos")
+    fun getAllRepos(@Path("user") user: String) : Call<List<Repository>>
 }

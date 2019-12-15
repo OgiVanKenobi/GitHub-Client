@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">Small Pdf test</string>
     <string name="not_specified">Not specified</string>
+    <string name="view_repositories_button_text">View repositories</string>
+    <string name="repositories_header_title">%1$s\'s repositories</string>
+    <string name="empty_repositories_view_text">The repositories list is empty.</string>
+    <string name="open_issues_label">Number of open issues:</string>
 </resources>

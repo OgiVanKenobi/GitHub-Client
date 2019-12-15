@@ -9,6 +9,7 @@ class TextUtils {
         fun <T> setTextToTextView(context: Context, view: TextView, value : T) {
             if (value == null || value.toString() == "") {
                 view.text = context.getString(R.string.not_specified)
+                view.setTextColor(context.resources.getColor(R.color.notSpecified))
             } else {
                 view.text = value.toString()
             }
