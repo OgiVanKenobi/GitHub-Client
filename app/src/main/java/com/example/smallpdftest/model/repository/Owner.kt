@@ -1,4 +1,4 @@
-package com.example.smallpdftest.model
+package com.example.smallpdftest.model.repository
 
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable

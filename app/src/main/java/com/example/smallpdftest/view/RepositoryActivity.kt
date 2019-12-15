@@ -4,25 +4,25 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.smallpdftest.R
 import com.example.smallpdftest.adapter.RepositoriesAdapter
-import com.example.smallpdftest.model.Repository
 import com.example.smallpdftest.model.User
+import com.example.smallpdftest.model.repository.Repository
 import com.example.smallpdftest.util.TextUtils
 import com.example.smallpdftest.viewmodel.RepositoryViewModel
 import kotlinx.android.synthetic.main.activity_repositories.*
 
 
-class RepositoryActivity : AppCompatActivity(), RepositoryClickListener {
+class RepositoryActivity : AppCompatActivity(), ItemClickListener<Repository> {
 
     private lateinit var viewModel: RepositoryViewModel
+
     private val userKey = "user_key"
-    private var repositoriesAdapter : RepositoriesAdapter? = null
+    private var repositoriesAdapter: RepositoriesAdapter? = null
     private val authTokenKey = "authToken"
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,14 +31,18 @@ class RepositoryActivity : AppCompatActivity(), RepositoryClickListener {
         handleIntent()
     }
 
-    override fun onRepositoryClicked(repository: Repository) {
-        Toast.makeText(this, repository.name + " clicked!", Toast.LENGTH_SHORT).show()
+    override fun onItemClicked(item: Repository) {
+        val sharedPreference = getSharedPreferences(getString(R.string.app_name), Context.MODE_PRIVATE)
+        viewModel.onRepositoryClicked(this,
+            sharedPreference.getString(authTokenKey, ""),
+            item.owner.login, item.name
+        )
     }
 
     private fun handleIntent() {
         val bundle: Bundle? = intent.extras
         val repositories: List<Repository> = bundle?.get(REPOSITORY_LIST_KEY) as List<Repository>
-        val user : User = bundle.getSerializable(userKey) as User
+        val user: User = bundle.getSerializable(userKey) as User
 
         initializeViewModel(repositories)
         setupHeader(user)
@@ -52,6 +56,7 @@ class RepositoryActivity : AppCompatActivity(), RepositoryClickListener {
 
     private fun showData(repositories: List<Repository>) {
         repositoriesRecyclerView.layoutManager = LinearLayoutManager(this)
+        repositoriesRecyclerView.setHasFixedSize(true)
         repositoriesAdapter = RepositoriesAdapter(this, repositories, this)
         repositoriesRecyclerView.adapter = repositoriesAdapter
     }
@@ -83,7 +88,7 @@ class RepositoryActivity : AppCompatActivity(), RepositoryClickListener {
          * @param context context
          * @param repositories list of repositories
          */
-        fun getIntent(context: Context, repositories: List<Repository>, user : User): Intent {
+        fun getIntent(context: Context, repositories: List<Repository>, user: User): Intent {
             val intent = Intent(context, RepositoryActivity::class.java)
             var list: ArrayList<Repository> = repositories as ArrayList<Repository>
             intent.putExtra(REPOSITORY_LIST_KEY, list)

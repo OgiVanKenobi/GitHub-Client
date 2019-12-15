@@ -4,7 +4,7 @@ import android.content.Context
 import android.widget.Toast
 import androidx.core.content.ContextCompat.startActivity
 import androidx.lifecycle.ViewModel
-import com.example.smallpdftest.model.Repository
+import com.example.smallpdftest.model.repository.Repository
 import com.example.smallpdftest.model.User
 import com.example.smallpdftest.network.RetrofitClient
 import com.example.smallpdftest.view.RepositoryActivity

@@ -1,8 +1,8 @@
 package com.example.smallpdftest.network
 
-import com.example.smallpdftest.model.AccessToken
-import com.example.smallpdftest.model.Repository
-import com.example.smallpdftest.model.User
+import com.example.smallpdftest.model.*
+import com.example.smallpdftest.model.repository.CommitParent
+import com.example.smallpdftest.model.repository.Repository
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -25,4 +25,7 @@ interface GitHubApi {
 
     @GET("users/{user}/repos")
     fun getAllRepos(@Path("user") user: String) : Call<List<Repository>>
+
+    @GET("repos/{owner}/{repo}/commits")
+    fun getCommit(@Path("owner") owner: String, @Path("repo") repo : String) : Call<List<CommitParent>>
 }

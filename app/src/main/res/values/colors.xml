@@ -10,4 +10,6 @@
     <color name="colorAccent">@color/color3</color>
 
     <color name="notSpecified">@color/color4</color>
+    <color name="expand_arrow_color">#FF000000</color>
+    <color name="commit_message_background_color">#f0ebeb</color>
 </resources>

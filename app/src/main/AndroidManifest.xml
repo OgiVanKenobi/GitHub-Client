@@ -28,5 +28,6 @@
         </activity>
         <activity android:name=".view.UserActivity"/>
         <activity android:name=".view.RepositoryActivity"/>
+        <activity android:name=".view.CommitsActivity"/>
     </application>
 </manifest>

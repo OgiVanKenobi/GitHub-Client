@@ -8,16 +8,20 @@ import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.example.smallpdftest.R
-import com.example.smallpdftest.model.Repository
-import com.example.smallpdftest.view.RepositoryClickListener
+import com.example.smallpdftest.model.repository.Repository
+import com.example.smallpdftest.view.ItemClickListener
 
 /**
  * Adapter class for list of repositories
+ *
+ * @param context       context
+ * @param repositories  list of repositories
+ * @param clickListener click listener
  */
 class RepositoriesAdapter(
     private val context: Context,
     private val repositories: List<Repository>,
-    private val clickListener: RepositoryClickListener
+    private val clickListener: ItemClickListener<Repository>
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
 
@@ -53,7 +57,7 @@ class RepositoriesAdapter(
             name?.text = repository.name
             openIssues?.text = repository.open_issues_count.toString()
             itemRepositoryParentLayout?.setOnClickListener {
-                clickListener.onRepositoryClicked(repository)
+                clickListener.onItemClicked(repository)
             }
         }
     }

@@ -5,4 +5,10 @@
     <string name="repositories_header_title">%1$s\'s repositories</string>
     <string name="empty_repositories_view_text">The repositories list is empty.</string>
     <string name="open_issues_label">Number of open issues:</string>
+    <string name="commit_sha_label">SHA:</string>
+    <string name="commit_message_label">Commit message</string>
+    <string name="commiter_label">Commiter</string>
+    <string name="author_label">Author</string>
+    <string name="date_label">Date:</string>
+    <string name="url_label">Url:</string>
 </resources>
