@@ -67,7 +67,7 @@ class RepositoryActivity : AppCompatActivity(), ItemClickListener<Repository> {
     }
 
     private fun setupHeader(user: User) {
-        Glide.with(this).load(user.avatarUrl).into(avatarIcon)
+        Glide.with(this).load(user.avatarUrl).placeholder(R.drawable.image_placeholder).into(avatarIcon)
         TextUtils.setTextToTextView(
             this, repositoriesHeaderTextView,
             String.format(getString(R.string.repositories_header_title, user.login))

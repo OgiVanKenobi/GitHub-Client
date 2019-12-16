@@ -76,9 +76,11 @@ class CommitsAdapter(
 
         private fun bindChildViews(commitParent: CommitParent) {
             commitMessage?.let { TextUtils.setTextToTextView(context, it, commitParent.commit.message) }
-            committerAvatarIcon?.let { Glide.with(context).load(commitParent.committer.avatar_url).into(it) }
+            committerAvatarIcon?.let { Glide.with(context).load(commitParent.committer.avatar_url)
+                .placeholder(R.drawable.image_placeholder).into(it) }
             committerName?.let { TextUtils.setTextToTextView(context, it, commitParent.commit.committer.name) }
-            authorAvatarIcon?.let { Glide.with(context).load(commitParent.author.avatar_url).into(it) }
+            authorAvatarIcon?.let { Glide.with(context).load(commitParent.author.avatar_url)
+                .placeholder(R.drawable.image_placeholder).into(it) }
             authorName?.let { TextUtils.setTextToTextView(context, it, commitParent.commit.author.name) }
             date?.let { TextUtils.setTextToTextView(context, it, commitParent.commit.committer.date.substring(0, 10)) }
             sha?.let { TextUtils.setTextToTextView(context, it, commitParent.sha) }

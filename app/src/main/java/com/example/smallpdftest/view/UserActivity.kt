@@ -37,7 +37,7 @@ class UserActivity : AppCompatActivity() {
     }
 
     private fun showData(user: User) {
-        Glide.with(this).load(user.avatarUrl).into(avatarImageView)
+        Glide.with(this).load(user.avatarUrl).placeholder(R.drawable.image_placeholder).into(avatarImageView)
         TextUtils.setTextToTextView(this, nameTextView, user.name)
         TextUtils.setTextToTextView(this, companyTextView, user.company)
     }
