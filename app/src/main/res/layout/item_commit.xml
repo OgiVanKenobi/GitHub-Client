@@ -5,14 +5,14 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="12dp">
+        android:layout_margin="@dimen/divide_margin">
 
     <LinearLayout
             android:id="@+id/itemCommitParentLayout"
-            android:background="@color/colorPrimary"
+            android:background="@drawable/button_drawable"
             android:weightSum="1"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="150dp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -21,54 +21,64 @@
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="0.1"
+                android:layout_weight="0.2"
                 android:orientation="vertical">
 
             <TextView
                     android:id="@+id/commitParentMessageTextView"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:maxLines="1"
+                    android:layout_height="@dimen/commit_message_view_height"
+                    android:layout_marginTop="@dimen/standard_margin"
+                    android:paddingStart="@dimen/small_padding"
+                    android:paddingEnd="@dimen/small_padding"
                     android:ellipsize="end"
-                    android:textSize="16sp"
+                    android:maxLines="4"
+                    android:textStyle="bold"
+                    android:textColor="@color/recyclerViewText"
+                    android:textSize="@dimen/standard_text_size"
                     android:textAlignment="center"
                     tools:text="Added networking module"/>
 
             <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center|center_vertical"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
                     android:orientation="horizontal">
 
                 <TextView
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:paddingStart="8dp"
-                        android:layout_marginTop="8dp"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="@dimen/small_padding"
+                        android:paddingEnd="@dimen/small_padding"
+                        android:layout_marginTop="@dimen/small_margin"
                         android:textStyle="bold"
+                        android:textColor="@color/recyclerViewText"
                         android:textAlignment="center"
                         android:text="@string/commit_sha_label"/>
 
                 <TextView
                         android:id="@+id/commitParentShaTextView"
                         android:layout_width="match_parent"
-                        android:layout_marginStart="8dp"
                         android:layout_height="wrap_content"
-                        android:textSize="14sp"
+                        android:maxLines="1"
+                        android:ellipsize="end"
+                        android:textColor="@color/recyclerViewText"
+                        android:layout_marginTop="@dimen/small_margin"
+                        android:layout_marginStart="@dimen/small_margin"
                         tools:text="ahd6a7ha78nd37d8n3byd3"/>
             </LinearLayout>
         </LinearLayout>
+
         <LinearLayout
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
                 android:gravity="center"
-                android:layout_weight="0.9">
+                android:layout_weight="0.8">
 
             <ImageView
                     android:id="@+id/arrowIcon"
-                    android:layout_width="52dp"
-                    android:layout_height="52dp"
+                    android:layout_width="@dimen/expand_arrow_size"
+                    android:layout_height="@dimen/expand_arrow_size"
                     android:src="@drawable/ic_expand_arrow"
                     tools:text="Small PDF test project"/>
         </LinearLayout>

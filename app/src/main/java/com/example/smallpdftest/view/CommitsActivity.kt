@@ -11,9 +11,11 @@ import androidx.recyclerview.widget.SimpleItemAnimator
 import com.example.smallpdftest.R
 import com.example.smallpdftest.adapter.CommitsAdapter
 import com.example.smallpdftest.model.repository.CommitParent
+import com.example.smallpdftest.util.TextUtils
 import com.example.smallpdftest.viewmodel.CommitsViewModel
 import kotlinx.android.synthetic.main.activity_commits.*
 import kotlinx.android.synthetic.main.activity_repositories.emptyView
+import kotlinx.android.synthetic.main.layout_title_toolbar.*
 
 class CommitsActivity : AppCompatActivity() {
 
@@ -31,6 +33,7 @@ class CommitsActivity : AppCompatActivity() {
         val commits: List<CommitParent> = bundle?.get(COMMITS_LIST_KEY) as List<CommitParent>
 
         initializeViewModel(commits)
+        TextUtils.setTextToTextView(this, toolbar_title_text_view, getString(R.string.commits_toolbar_title_text))
 
         if (commits.isNotEmpty()) {
             setupRecyclerView(commits)

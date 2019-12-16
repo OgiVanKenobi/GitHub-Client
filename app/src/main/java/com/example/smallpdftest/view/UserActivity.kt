@@ -11,6 +11,7 @@ import com.example.smallpdftest.model.User
 import com.example.smallpdftest.util.TextUtils
 import com.example.smallpdftest.viewmodel.UserViewModel
 import kotlinx.android.synthetic.main.activity_user.*
+import kotlinx.android.synthetic.main.layout_title_toolbar.*
 
 class UserActivity : AppCompatActivity() {
 
@@ -38,6 +39,7 @@ class UserActivity : AppCompatActivity() {
 
     private fun showData(user: User) {
         Glide.with(this).load(user.avatarUrl).placeholder(R.drawable.image_placeholder).into(avatarImageView)
+        TextUtils.setTextToTextView(this, toolbar_title_text_view, getString(R.string.account_info))
         TextUtils.setTextToTextView(this, nameTextView, user.name)
         TextUtils.setTextToTextView(this, companyTextView, user.company)
     }

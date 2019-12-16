@@ -2,30 +2,34 @@
 <androidx.constraintlayout.widget.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:background="@drawable/dark_blue_backround"
+        android:layout_width="match_parent" android:layout_height="match_parent"
         tools:context=".view.MainActivity">
 
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="200dp"
-            android:text="@string/welcome_text"
-            android:textSize="32sp"
-            app:layout_constraintTop_toTopOf="parent"
+    <ImageView
+            android:id="@+id/welcomeImageView"
+            android:layout_width="@dimen/logo_size"
+            android:layout_height="@dimen/logo_size"
+            android:layout_marginBottom="@dimen/logo_margin"
+            app:layout_constraintBottom_toBottomOf="@+id/loginButton"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            android:src="@drawable/welcome_logo"/>
 
-    <TextView android:layout_width="200dp"
-              android:layout_height="100dp"
-              android:id="@+id/loginButton"
-              app:layout_constraintTop_toTopOf="parent"
-              app:layout_constraintBottom_toBottomOf="parent"
-              app:layout_constraintStart_toStartOf="parent"
-              app:layout_constraintEnd_toEndOf="parent"
-              android:textAlignment="center"
-              android:gravity="center_vertical"
-              android:visibility="gone"
-              android:textSize="28sp"
-              android:text="LogIn"/>
+    <Button
+            android:layout_width="@dimen/login_button_width"
+            android:layout_height="@dimen/login_button_height"
+            android:id="@+id/loginButton"
+            style="@style/LoginButtonStyle"
+            android:background="@drawable/button_drawable"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:visibility="gone"
+            android:textAlignment="center"
+            android:gravity="center_vertical"
+            android:textSize="@dimen/login_button_text_size"
+            android:text="@string/login_button_text"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

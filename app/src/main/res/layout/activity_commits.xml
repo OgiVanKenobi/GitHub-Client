@@ -1,28 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
+        android:background="@color/colorSecondary"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_height="match_parent"
         tools:context=".view.MainActivity">
 
-    <TextView android:layout_width="200dp"
-              android:layout_height="52dp"
-              android:id="@+id/commitsTitle"
-              app:layout_constraintTop_toTopOf="parent"
-              app:layout_constraintStart_toStartOf="parent"
-              app:layout_constraintEnd_toEndOf="parent"
-              android:textAlignment="center"
-              android:gravity="center_vertical"
-              android:textSize="28sp"
-              android:text="Commits"/>
+    <include
+            layout="@layout/layout_title_toolbar"
+            android:id="@+id/toolbar"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
 
     <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/commitsRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="60dp"
-            app:layout_constraintTop_toBottomOf="@+id/commitsTitle"
+            android:layout_marginTop="@dimen/commits_recycler_margin_top"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
     </androidx.recyclerview.widget.RecyclerView>
@@ -32,10 +30,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/empty_repositories_view_text"
-            android:layout_margin="16dp"
-            android:textSize="26sp"
+            android:layout_margin="@dimen/standard_margin"
+            android:textSize="@dimen/empty_view_text_size"
             android:textStyle="bold"
-            app:layout_constraintTop_toBottomOf="@+id/commitsTitle"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"

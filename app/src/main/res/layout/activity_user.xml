@@ -3,59 +3,83 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
+        android:background="@color/colorSecondary"
         android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <include
+            layout="@layout/layout_title_toolbar"
+            android:id="@+id/toolbar"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
 
     <ImageView
             android:id="@+id/avatarImageView"
-            android:layout_width="300dp"
-            android:layout_height="300dp"
-            android:layout_marginTop="32dp"
+            android:layout_width="@dimen/avatar_size_large"
+            android:layout_height="@dimen/avatar_size_large"
+            android:layout_marginTop="@dimen/large_margin"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"/>
 
     <TextView
-            android:id="@+id/avatarTextView"
-            android:layout_width="match_parent"
+            android:id="@+id/nameLabel"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="@dimen/large_margin"
+            android:text="@string/name_label"
+            android:textStyle="bold"
+            android:textSize="@dimen/standard_text_size"
             app:layout_constraintTop_toBottomOf="@+id/avatarImageView"
-            app:layout_constraintBottom_toTopOf="@id/nameTextView"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            tools:text="image.url"/>
+            app:layout_constraintEnd_toEndOf="parent"/>
 
     <TextView
             android:id="@+id/nameTextView"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/avatarTextView"
-            app:layout_constraintBottom_toTopOf="@+id/companyTextView"
+            android:layout_marginTop="@dimen/small_margin"
+            android:textSize="@dimen/large_text"
+            app:layout_constraintTop_toBottomOf="@id/nameLabel"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             tools:text="Ognjen Scekic"/>
 
     <TextView
-            android:id="@+id/companyTextView"
-            android:layout_width="match_parent"
+            android:id="@+id/companyLabel"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="32dp"
-            app:layout_constraintBottom_toBottomOf="@id/viewRepositoriesButton"
-            app:layout_constraintTop_toBottomOf="@id/nameTextView"
+            android:layout_marginTop="@dimen/large_margin"
+            android:text="@string/company_label"
+            android:textStyle="bold"
+            android:textSize="@dimen/standard_text_size"
+            app:layout_constraintTop_toBottomOf="@+id/nameTextView"
             app:layout_constraintStart_toStartOf="parent"
-            android:text="Company not specified"
             app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+            android:id="@+id/companyTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/small_margin"
+            android:textSize="@dimen/large_text"
+            android:layout_marginBottom="@dimen/large_margin"
+            app:layout_constraintTop_toBottomOf="@id/companyLabel"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="Company not specified"/>
 
     <Button
             android:id="@+id/viewRepositoriesButton"
             android:layout_width="match_parent"
-            android:layout_height="52dp"
-            android:layout_margin="12dp"
+            android:layout_height="@dimen/button_height"
+            android:layout_margin="@dimen/divide_margin"
             android:text="@string/view_repositories_button_text"
             android:textAlignment="center"
+            android:textColor="@color/primaryText"
             android:gravity="center"
-            android:background="@color/colorPrimary"
+            android:background="@drawable/button_drawable"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,15 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="color1">#008577</color>
+    <color name="black">#000000</color>
+    <color name="white">#ffffff</color>
+    <color name="color1">#1f2794</color>
     <color name="color2">#00574B</color>
     <color name="color3">#D81B60</color>
     <color name="color4">#a1150b</color>
+    <color name="color5">#dee0ff</color>
+    <color name="color6">#4080FF</color>
+    <color name="color7">#6f78f2</color>
+    <color name="color8">#c5c5d6</color>
+    <color name="color9">#cccdde</color>
 
     <color name="colorPrimary">@color/color1</color>
+    <color name="colorSecondary">@color/color5</color>
     <color name="colorPrimaryDark">@color/color2</color>
     <color name="colorAccent">@color/color3</color>
 
+    <color name="primaryText">#FFFFFF</color>
+    <color name="secondaryText">@color/colorPrimary</color>
+    <color name="recyclerViewText">@color/color8</color>
+
     <color name="notSpecified">@color/color4</color>
-    <color name="expand_arrow_color">#FF000000</color>
-    <color name="commit_message_background_color">#f0ebeb</color>
+    <color name="expand_arrow_color">@color/white</color>
+    <color name="commit_message_background_color">@color/color9</color>
+    <color name="loginButtonColor">@color/colorPrimary</color>
+    <color name="welcome_text_color">@color/black</color>
+    <color name="recycler_item_color">@color/color7</color>
 </resources>

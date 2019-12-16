@@ -3,25 +3,26 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
+        android:background="@color/colorSecondary"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
     <LinearLayout
             android:id="@+id/headerLinearLayout"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="@dimen/repositories_toolbar_height"
             android:orientation="horizontal"
-            android:layout_margin="12dp"
+            android:background="@color/colorPrimary"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
 
         <ImageView
                 android:id="@+id/avatarIcon"
-                android:layout_width="76dp"
-                android:layout_height="76dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
+                android:layout_width="@dimen/repositories_header_avatar_size"
+                android:layout_height="@dimen/repositories_header_avatar_size"
+                android:layout_marginStart="@dimen/standard_margin"
+                android:layout_marginEnd="@dimen/standard_margin"
                 android:layout_gravity="start|center_vertical"/>
 
         <TextView
@@ -29,8 +30,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
-                android:paddingStart="16dp"
-                android:textSize="18sp"
+                android:paddingStart="@dimen/standard_padding"
+                android:paddingEnd="@dimen/standard_padding"
+                android:textColor="@color/primaryText"
+                android:textSize="@dimen/repositories_header_text_size"
                 android:text="@string/repositories_header_title"
                 tools:text="Ogi wan Kenobi's repositories"/>
     </LinearLayout>
@@ -39,7 +42,7 @@
             android:id="@+id/repositoriesRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
+            android:layout_margin="@dimen/standard_margin"
             app:layout_constraintTop_toBottomOf="@+id/headerLinearLayout"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
@@ -50,8 +53,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/empty_repositories_view_text"
-            android:layout_margin="16dp"
-            android:textSize="26sp"
+            android:layout_margin="@dimen/standard_margin"
+            android:textSize="@dimen/empty_view_text_size"
             android:textStyle="bold"
             app:layout_constraintTop_toBottomOf="@+id/headerLinearLayout"
             app:layout_constraintStart_toStartOf="parent"

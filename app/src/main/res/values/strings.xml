@@ -7,9 +7,14 @@
     <string name="open_issues_label">Number of open issues:</string>
     <string name="commit_sha_label">SHA:</string>
     <string name="commit_message_label">Commit message</string>
-    <string name="commiter_label">Commiter</string>
+    <string name="committer_label">Committer</string>
     <string name="author_label">Author</string>
     <string name="date_label">Date:</string>
     <string name="url_label">Url:</string>
-    <string name="welcome_text">Welcome to GitHub!</string>
+    <string name="welcome_text">Welcome to</string>
+    <string name="login_button_text">LogIn</string>
+    <string name="commits_toolbar_title_text">Commits</string>
+    <string name="account_info">Account info</string>
+    <string name="name_label">name:</string>
+    <string name="company_label">company:</string>
 </resources>
